@@ -20,7 +20,7 @@ using namespace std;
  * returns the amount of damage done by an algortithm entered as
  * as string
  */
-unsigned int damageScore(string program);
+long long int damageScore(string program);
 
 /**
  * swaps characters
@@ -53,10 +53,10 @@ int main(int argc, char *argv[])
     infile >> test;
 
     char c;
-    unsigned int numBuffer;
+    long long int numBuffer;
     string lineBuffer;
     bool done = false;
-    unsigned int damage = 0, hack = 0;
+    long long int damage = 0, hack = 0;
 
 
     for (int i = 0; i < test; i++)
@@ -93,16 +93,21 @@ int main(int argc, char *argv[])
             }
         }
 
+        if (i > 0)
+        {
+            outfile << endl;
+        }
+
         // damages bearable by sheild
         if (done)
         {
-            outfile << "Case #" << i + 1 << ": " << hack << "\n";
+            outfile << "Case #" << i + 1 << ": " << hack;
         }
 
         // universe is doomed
         else
         {
-            outfile << "Case #" << i + 1 << ": IMPOSSIBLE\n";
+            outfile << "Case #" << i + 1 << ": IMPOSSIBLE";
         }
     }
 
@@ -117,11 +122,11 @@ int main(int argc, char *argv[])
  * returns the amount of damage done by an algortithm entered as
  * as string
  */
-unsigned int damageScore(string program)
+long long int damageScore(string program)
 {
-    unsigned int damage = 0, value = 1;
+    long long int damage = 0, value = 1;
 
-    for (unsigned int i = 0; i < program.length(); i++)
+    for (long long int i = 0, j = program.length(); i < j; i++)
     {
         if (program[i] == 'C')
         {
